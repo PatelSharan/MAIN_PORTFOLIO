@@ -1,0 +1,133 @@
+@import "tailwindcss";
+
+@custom-variant dark (&:where(.dark, .dark *));
+
+@plugin 'tailwind-scrollbar';
+
+:root {
+  --navbar-height: 3.5rem;
+  --footer-height: 6rem;
+  --asidebar-width: 20rem;
+}
+
+@theme {
+  --color-light-website-bgColor: #ffffff;
+  --color-dark-website-bgColor: #0a0a0a;
+
+  --color-light-1: #f8f8f8;
+  --color-light-2: #f2f2f2;
+  --color-light-3: #eaeaea;
+
+  --color-dark-1: #161616;
+  --color-dark-2: #262626;
+  --color-dark-3: #404040;
+
+  --color-theme-text: #3B82F6;
+
+  --color-light-website-text: #737373;
+  --color-dark-website-text: #a1a1a1;
+
+  --color-light-text-1: #ffffff;
+
+  --color-dark-text-1: #000000;
+}
+
+@keyframes scroll {
+  0% {
+    transform: translateX(0);
+  }
+
+  100% {
+    transform: translateX(-50%);
+  }
+}
+
+.animate-scroll {
+  display: flex;
+  width: max-content;
+  animation: scroll 30s linear infinite;
+}
+
+section {
+  opacity: 0;
+  transform: scale(0.9);
+  transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+}
+
+/* When visible */
+section.show {
+  opacity: 1;
+  transform: scale(1);
+}
+
+
+@layer components {
+
+  .bg-DWLW {
+    @apply bg-light-website-bgColor dark:bg-dark-website-bgColor
+  }
+
+  .text-DWLW {
+    @apply text-dark-website-text dark:text-light-website-text
+  }
+
+  .text-DWLW-hover {
+    @apply hover:text-dark-website-text hover:dark:text-light-website-text
+  }
+
+  .bg-D1L1 {
+    @apply bg-light-1 dark:bg-dark-1
+  }
+
+  .bg-D2L2 {
+    @apply bg-light-2 dark:bg-dark-2
+  }
+
+  .bg-D3L3 {
+    @apply bg-light-3 dark:bg-dark-3
+  }
+
+  .bg-D1L1-hover {
+    @apply hover:bg-light-1 hover:dark:bg-dark-1
+  }
+
+  .bg-D2L2-hover {
+    @apply hover:bg-light-2 hover:dark:bg-dark-2
+  }
+
+  .bg-D3L3-hover {
+    @apply hover:bg-light-3 hover:dark:bg-dark-3
+  }
+
+  .text-D1L1 {
+    @apply text-dark-text-1 dark:text-light-text-1
+  }
+
+  .text-D1L1-hover {
+    @apply hover:text-dark-text-1 hover:dark:text-light-text-1
+  }
+
+  .text-D1L1-focus {
+    @apply focus:text-dark-text-1 focus:dark:text-light-text-1
+  }
+
+  .borderColor {
+    @apply border-gray-200 dark:border-gray-800
+  }
+
+  .smallerText {
+    @apply text-[10px]
+  }
+
+  .btn-D1L1-hover {
+    @apply hover:bg-light-1 hover:dark:bg-dark-1 rounded-md py-1.5 px-2
+  }
+
+  .btn-D2L2-hover {
+    @apply hover:bg-light-2 hover:dark:bg-dark-2 rounded-md py-1.5 px-2
+  }
+
+  .btn-D3L3-hover {
+    @apply hover:bg-light-2 hover:dark:bg-dark-2 rounded-md py-1.5 px-2
+  }
+}
