@@ -46,14 +46,17 @@ export default function Home() {
 
   return (
     <div className="space-y-7 pb-3">
-      <section id="Home">
-        <div className="p-3 flex flex-col items-center justify-center space-y-3 min-h-[60vh]">
-          <div className="text-3xl sm:text-4xl text-D1L1">
+      <section id="Home" className="min-h-[50vh] p-3 flex flex-col-reverse md:flex-row items-center">
+        <div className="flex flex-col items-center justify-center space-y-3 md:w-[60%]">
+          <div className="text-3xl lg:text-4xl text-D1L1">
             <span>I Am </span><span className="text-theme-text font-semibold">Sharan Patel</span>
           </div>
           <div className="text-lg">
             Web Developer
           </div>
+        </div>
+        <div className="flex-1 w-[90%]">
+          <img src={"/assets/menAndCoding.svg"} alt="Main" />
         </div>
       </section>
 
@@ -79,9 +82,12 @@ export default function Home() {
       {/* <<==== MAIN = ABOUT PART */}
       <section
         id="About"
-        className="px-3 sm:px-6 py-12 lg:w-[65vw] mx-auto"
+        className="px-3 sm:px-6 py-12 mx-auto flex flex-col-reverse md:flex-row items-center justify-center gap-4"
       >
-        <div className="text-center space-y-4">
+        <div className="flex-1 w-[90%]">
+          <img src={"/assets/codeTyping.svg"} alt="Main" />
+        </div>
+        <div className="text-center space-y-4 md:w-[60%]">
           <h2 className="text-3xl md:text-4xl font-bold text-theme-text">
             About Me
           </h2>
