@@ -86,10 +86,10 @@ export default function Home() {
             About Me
           </h2>
           <p className="text-sm sm:text-base md:text-lg text-D1L1 leading-relaxed max-w-3xl mx-auto">
-            Hi, I'm <span className="font-semibold text-theme-text">Sharan Patel</span>.
+            Hi, I&apos;m <span className="font-semibold text-theme-text">Sharan Patel</span>.
             I hold a <span className="font-medium">BCA degree from Silver Oak University, Ahemdabad. </span>and aspire to become a <span className="font-semibold">Fullstack Web Developer</span>.
             I am passionate about learning modern technologies and using my coding skills
-            to craft innovative solutions that enhance and simplify people's lives.
+            to craft innovative solutions that enhance and simplify people&apos;s lives.
           </p>
         </div>
       </section>

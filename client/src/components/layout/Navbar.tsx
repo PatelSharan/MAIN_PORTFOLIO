@@ -1,8 +1,6 @@
 "use client"
 import React, { useState } from 'react'
 import ThemeChanger from '../common/ThemeChanger'
-import Link from 'next/link'
-import { usePathname } from 'next/navigation'
 import Icons from '../icons/ReactIconsLib'
 
 const Navbar = () => {
@@ -20,16 +18,13 @@ const Navbar = () => {
         }
     ]
 
-    const handleScroll = (e: any, href: any) => {
+    const handleScroll = (e: React.MouseEvent<HTMLAnchorElement>, href: string) => {
         e.preventDefault();
         const target = document.querySelector(href);
         if (target) {
             target.scrollIntoView({ behavior: "smooth", block: "start" });
         }
     };
-
-
-    console.log(isShowAsideBar);
 
     return (
         <>
