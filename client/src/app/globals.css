@@ -119,6 +119,22 @@ section.show {
     @apply text-[10px]
   }
 
+  .btn-1 {
+    @apply bg-black text-white dark:bg-white dark:text-black hover:bg-black/80 hover:dark:bg-white/90 cursor-pointer py-1.5 px-3 rounded-md text-sm first-letter:uppercase
+  }
+
+  .btn-D1L1 {
+    @apply bg-light-1 dark:bg-dark-1 text-dark-text-1 dark:text-light-text-1 cursor-pointer rounded-md py-1.5 px-2
+  }
+
+  .btn-D2L2 {
+    @apply bg-light-2 dark:bg-dark-2 text-dark-text-1 dark:text-light-text-1 cursor-pointer rounded-md py-1.5 px-2
+  }
+
+  .btn-D3L3 {
+    @apply bg-light-2 dark:bg-dark-2 text-dark-text-1 dark:text-light-text-1 cursor-pointer rounded-md py-1.5 px-2
+  }
+
   .btn-D1L1-hover {
     @apply hover:bg-light-1 hover:dark:bg-dark-1 rounded-md py-1.5 px-2
   }

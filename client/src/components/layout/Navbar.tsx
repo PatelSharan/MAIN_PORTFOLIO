@@ -1,11 +1,14 @@
 "use client"
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import ThemeChanger from '../common/ThemeChanger'
 import Icons from '../icons/ReactIconsLib'
+import DownloadResume from './DownloadResume'
 
 const Navbar = () => {
 
     const [isShowAsideBar, setIsShowAsideBar] = useState(false);
+    const [activeSection, setActiveSection] = useState<string>("Home");
+
 
     const navItem = [
         {
@@ -15,6 +18,14 @@ const Navbar = () => {
         {
             label: "About",
             href: "#About"
+        },
+        {
+            label: "Works",
+            href: "#Works"
+        },
+        {
+            label: "Contact Me",
+            href: "#ContactMe"
         }
     ]
 
@@ -26,12 +37,38 @@ const Navbar = () => {
         }
     };
 
+
+    useEffect(() => {
+        const sections = navItem.map(item => document.querySelector(item.href));
+        const observer = new IntersectionObserver(
+            (entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        setActiveSection(entry.target.id);
+                    }
+                });
+            },
+            { threshold: 0.7 } // 70% visible
+        );
+
+        sections.forEach(section => {
+            if (section) observer.observe(section);
+        });
+
+        return () => {
+            sections.forEach(section => {
+                if (section) observer.unobserve(section!);
+            });
+        };
+    }, []);
+
+
     return (
         <>
-            <div className='bg-DWLW text-DWLW text-sm h-[var(--navbar-height)] flex items-center justify-between md:justify-end p-2 sticky top-0'>
-                <div className='md:hidden'>
+            <div className='bg-DWLW text-DWLW text-sm h-[var(--navbar-height)] flex items-center justify-between p-2 sticky top-0'>
+                <div className='flex items-center justify-center'>
                     <button
-                        className={`cursor-pointer transition-all duration-300 ease-in-out ${isShowAsideBar ? "rotate-90" : "rotate-0"}`}
+                        className={`md:hidden cursor-pointer transition-all duration-300 ease-in-out ${isShowAsideBar ? "rotate-90" : "rotate-0"}`}
                         onClick={() => {
                             setIsShowAsideBar(!isShowAsideBar)
                         }}>
@@ -41,6 +78,15 @@ const Navbar = () => {
                             <Icons.Menu size={25} />
                         )}
                     </button>
+                    <div className='text-lg px-3 text-D1L1'>
+                        <a
+                            href="#Home"
+                            className='hover:text-theme-text'
+                            onClick={(e) => handleScroll(e, "#Home")}
+                        >
+                            Sharan Patel
+                        </a>
+                    </div>
                 </div>
 
                 <nav className='flex items-center justify-center gap-3'>
@@ -50,13 +96,16 @@ const Navbar = () => {
                                 <a
                                     href={item.href}
                                     onClick={(e) => handleScroll(e, item.href)}
-                                    className="btn-D3L3-hover text-D1L1-hover"
+                                    className={`btn-D3L3-hover text-D1L1-hover transform duration-300 ease-in-out ${item?.href.replace("#", "") === activeSection ? "text-D1L1" : ""}`}
                                 >
                                     {item.label}
                                 </a>
                             </li>
                         ))}
                     </ul>
+                    <div className='hidden md:flex'>
+                        <DownloadResume />
+                    </div>
                     <div className='md:border-l borderColor md:px-3'>
                         <ThemeChanger />
                     </div>
@@ -75,7 +124,7 @@ const Navbar = () => {
                                         handleScroll(e, item.href);
                                         setIsShowAsideBar(false);
                                     }}
-                                    className='text-xl text-D1L1-focus'
+                                    className={`text-xl text-D1L1-focus ${item?.href.replace("#", "") === activeSection ? "text-D1L1" : ""}`}
                                 >
                                     {item.label}
                                 </a>
@@ -83,6 +132,9 @@ const Navbar = () => {
                         ))}
                     </ul>
                 </nav>
+                <div className='px-5 my-3'>
+                    <DownloadResume />
+                </div>
             </aside>
         </>
     )

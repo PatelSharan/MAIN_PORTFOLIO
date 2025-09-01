@@ -41,7 +41,7 @@ const Footer = () => {
                         </Link>
                     </div>
                     <div className='cursor-pointer text-D1L1-hover'>
-                        <Link href={"https://github.com/PatelSharan"} target='blank'>
+                        <Link href={"https://www.linkedin.com/in/sharan-patel-556348295/"} target='blank'>
                             <Icons.Linkedin size={20} />
                         </Link>
                     </div>
